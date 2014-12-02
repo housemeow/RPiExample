@@ -9,8 +9,10 @@ data = []
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(4,GPIO.OUT)
+# start signal
 GPIO.output(4,GPIO.HIGH)
 time.sleep(0.025)
+#
 GPIO.output(4,GPIO.LOW)
 time.sleep(0.02)
 
@@ -33,11 +35,10 @@ try:
 
 	for i in range(0, 32):
 		bit_count = 0
-
 		while data[count] == 0:
 			tmp = 1
 			count = count + 1
-
+		#	read until 0, bitocunt++
 		while data[count] == 1:
 			bit_count = bit_count + 1
 			count = count + 1
@@ -56,6 +57,7 @@ try:
 except:
 	print "ERR_RANGE"
 	exit(0)
+	#pass
 
 try:
 	for i in range(0, 8):
@@ -76,6 +78,7 @@ try:
 except:
 	print "ERR_RANGE"
 	exit(0)
+	# pass
 
 Humidity = bin2dec(HumidityBit)
 Temperature = bin2dec(TemperatureBit)
